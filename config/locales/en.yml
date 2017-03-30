@@ -1,0 +1,37 @@
+en:
+  bits:
+    bargraph: bargraph
+    bend-sensor: bend-sensor
+    branch: branch
+    bright-led: bright-led
+    button: button
+    buzzer: buzzer
+    coin-battery: coin-battery
+    dc-motor: dc-motor
+    dimmer: dimmer
+    doubleand: doubleand
+    doubleor: doubleor
+    fan: fan
+    forkinverter: forkinverter
+    led: led
+    light-sensor: light-sensor
+    light-trigger: light-trigger
+    light-wire: light-wire
+    long-led: long-led
+    motion-trigger: motion-trigger
+    power: power
+    pressure-sensor: pressure-sensor
+    pulse: pulse
+    rgb-led: rgb-led
+    roller-switch: roller-switch
+    servo-motor: servo-motor
+    slide-dimmer: slide-dimmer
+    slide-switch: slide-switch
+    sound-trigger: sound-trigger
+    temperature-sensor: temperature-sensor
+    timeout: timeout
+    toggle-switch: toggle-switch
+    usb-power: usb-power
+    uv-led: uv-led
+    vibration-motor: vibration-motor
+    wire: wire
