@@ -30,6 +30,8 @@ class InventionsController < ApplicationController
   def create
     @invention = Invention.new(invention_params)
 
+    # Create materials here when creating invention.
+
     respond_to do |format|
       if @invention.save
         format.html { redirect_to @invention, notice: 'Invention was successfully created.' }
@@ -44,6 +46,8 @@ class InventionsController < ApplicationController
   # PATCH/PUT /inventions/1
   # PATCH/PUT /inventions/1.json
   def update
+    # Add additional materials here when updating an invention if the objects don't already exist.
+
     respond_to do |format|
       if @invention.update(invention_params)
         format.html { redirect_to @invention, notice: 'Invention was successfully updated.' }

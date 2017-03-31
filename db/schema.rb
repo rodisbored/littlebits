@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329220439) do
+ActiveRecord::Schema.define(version: 20170331003207) do
+
+  create_table "bits", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "uuid",       null: false
+    t.string   "oid",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uuid"], name: "index_bits_on_uuid", using: :btree
+  end
 
   create_table "inventions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "uuid",                      null: false
@@ -25,6 +33,13 @@ ActiveRecord::Schema.define(version: 20170329220439) do
     t.datetime "updated_at",                null: false
     t.index ["creator_id"], name: "index_inventions_on_creator_id", using: :btree
     t.index ["uuid"], name: "index_inventions_on_uuid", using: :btree
+  end
+
+  create_table "materials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "uuid",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
