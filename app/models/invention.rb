@@ -1,15 +1,13 @@
 class Invention < ActiveRecord::Base
-  include Shared
-
-  has_many :bits
-  has_many :materials
+  include SharedMethods
 
   serialize :bits, Array
   serialize :materials, Array
 
-  validates_presence_of :uuid, :title, :description, :bits, :creator_id
+  before_validation :set_uuid, :set_creator
 
-  before_create :set_uuid, :set_creator
+  validates_presence_of :uuid, :title, :description, :bits, :creator_id
+  validates_uniqueness_of :uuid
 
   private
   def set_creator

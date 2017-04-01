@@ -1,6 +1,8 @@
 class Material < ActiveRecord::Base
-  include Shared
+  include SharedMethods
 
-  before_create :set_uuid
-  validates_presence_of :name
+  before_validation :set_uuid
+
+  validates_presence_of :name, :uuid
+  validates_uniqueness_of :name, :uuid
 end

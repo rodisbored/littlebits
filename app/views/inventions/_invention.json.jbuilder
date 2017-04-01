@@ -1,2 +1,12 @@
-json.extract! invention, :id, :created_at, :updated_at
-json.url invention_url(invention, format: :json)
+json.extract!(
+  invention,
+  :id,
+  :uuid,
+  :title,
+  :description,
+  :bits,
+  :materials,
+  :creator_id,
+  :created_at,
+  :updated_at
+)
