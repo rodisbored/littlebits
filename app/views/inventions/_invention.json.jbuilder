@@ -4,6 +4,8 @@ json.extract!(
   :uuid,
   :title,
   :description,
+  :username,
+  :email,
   :bits,
   :materials,
   :creator_id,

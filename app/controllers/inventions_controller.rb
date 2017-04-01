@@ -4,7 +4,6 @@ class InventionsController < ApplicationController
 
   ALLOWED_INVENTION_CREATE_UPDATE_PARAMS = [:title, :description, :username, :email, { bits: [] }, {materials: [] }]
   ALLOWED_INVENTION_INDEX_PARAMS = [:sort_order, :sort_by]
-  ALLOWED_INVENTION_SHOW_PARAMS = [:id, :uuid]
   INDEX_SORT = %w(title username)
   SORT_ORDER_PARAMS = %w(asc desc)
 
@@ -23,12 +22,7 @@ class InventionsController < ApplicationController
 
   # GET /inventions/1.json
   def show
-    invention = Invention.find_by_id_or_uuid(show_params[:id] || show_params[:uuid])
-    if invention
-      render locals: { invention: invention}
-    else
-      head 404
-    end
+    render locals: { invention: @invention}
   end
 
   # GET /inventions/new
@@ -43,34 +37,34 @@ class InventionsController < ApplicationController
   # POST /inventions
   # POST /inventions.json
   def create
-    byebug
     @invention = Invention.new(create_update_params)
 
-    respond_to do |format|
-      if @invention.save
-        format.json { render :show, status: :created, location: @invention }
-      else
-        format.json { render json: @invention.errors, status: :unprocessable_entity }
-      end
+    if @invention.save
+      render :show, status: :created, location: @invention
+    else
+      render json: @invention.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /inventions/1
   # PATCH/PUT /inventions/1.json
   def update
-    respond_to do |format|
-      if @invention.update(create_update_params)
-        format.json { render :show, status: :ok, location: @invention }
-      else
-        format.json { render json: @invention.errors, status: :unprocessable_entity }
-      end
+    if @invention.update(create_update_params)
+      render :show, status: :ok, location: @invention
+    else
+      render json: @invention.errors, status: :unprocessable_entity
     end
   end
 
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_invention
-    @invention = Invention.find(params[:id])
+    @invention = Invention.find_by_id(params[:id]) || Invention.find_by_uuid(params[:id])
+    unless @invention
+      msg = "Could not find invention with id or uuid: #{params[:id]}"
+      Rails.logger.info(msg)
+      render json: msg, status: :not_found
+    end
   end
 
   def index_params
