@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was setup using MySQL 5.6. It may work with MySQL 5.7, but that hasn't been tested locally.
 
-Things you may want to cover:
+Ruby 2.4.0 must be installed on the system to ensure correct operation. Since Ruby is backwards
+compatible to a certain extent, other Ruby versions will probably work, but are not guaranteed.
 
-* Ruby version
 
-* System dependencies
+## Installation
 
-* Configuration
+To install and run this project, execute the following commands each on their own line within the project
+root directory
 
-* Database creation
+```
+bundle install
+bundle exec rake db:create && bundle exec rake db:migrate
+bundle exec rails s
+```
 
-* Database initialization
+The littlebits-ui will need to be downloaded to interact with this backend which can be obtained
+[here](https://github.com/rodisbored/littlebits-ui).
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

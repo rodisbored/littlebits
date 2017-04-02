@@ -7,6 +7,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3'
 gem 'mysql2', '~> 0.4'
 gem 'puma', '~> 3.0'
+gem 'rack-cors', require: 'rack/cors'
 gem 'sass-rails', '~> 5.0'
 gem 'therubyracer', '~> 0.12', platforms: :ruby
 gem 'turbolinks', '~> 5'
