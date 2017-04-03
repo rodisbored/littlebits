@@ -16,6 +16,7 @@ gem 'uglifier', '~> 3.1'
 group :development, :test do
   # Always use the latest version of debuggers
   gem 'byebug'
+  gem 'faker', '~> 1.6'
 end
 
 group :development do

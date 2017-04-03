@@ -1,6 +1,5 @@
 class InventionsController < ApplicationController
   before_action :set_invention, only: [:show, :edit, :update]
-  before_action :add_materials, :validate_bits, only: [:create, :update]
 
   ALLOWED_INVENTION_CREATE_UPDATE_PARAMS = [:title, :description, :username, :email, { bits: [] }, {materials: [] }]
   ALLOWED_INVENTION_INDEX_PARAMS = [:sort_order, :sort_by]
@@ -74,16 +73,6 @@ class InventionsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def create_update_params
     params.permit(*ALLOWED_INVENTION_CREATE_UPDATE_PARAMS)
-  end
-
-  def add_materials
-    # Probably would want to optimize this so it could insert in bulk after figuring out which
-    # materials are already in the list
-    create_update_params[:materials].each do |material|
-      Material.create(name: material)
-    end
-  rescue => e
-    # Probably don't care, but could log or do other things
   end
 
   def validate_bits

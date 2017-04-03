@@ -17,6 +17,15 @@ bundle exec rake db:create && bundle exec rake db:migrate
 bundle exec rails s
 ```
 
+To quickly add items to the database for ease of use and testing, just run the following:
+
+
+```
+bundle exec rake db:seed
+```
+
+This will create 30 inventions each time it is run and can be done multiple times.
+
 The littlebits-ui will need to be downloaded to interact with this backend which can be obtained
 [here](https://github.com/rodisbored/littlebits-ui).
 
